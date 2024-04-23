@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import { AboutComponent } from './about/about.component';
-
 import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Route[] = [
@@ -11,14 +9,13 @@ const routes: Route[] = [
   },
   {
     path: 'about',
-    component: AboutComponent,
+    //component: AboutComponent,
+    //lazyLoad standalone component
+    loadComponent: () => import('./about/about.component').then(m => m.AboutComponent)
   },
   {
     path: 'dashboard',
-    loadChildren: () =>
-      import('./dashboard/dashboard-routing.module').then(
-        (mod) => mod.DashboardRoutingModule
-      ),
+    loadChildren: () => import('./dashboard/routes').then(m => m.DASHBOARD_ROUTES),
   },
 ];
 
@@ -26,4 +23,4 @@ const routes: Route[] = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

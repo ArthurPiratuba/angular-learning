@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  angular-tests:
+    build:
+      context: .
+    container_name: angular-tests
+    volumes:
+      - .:/usr/app
+    entrypoint: sh -c "npm install --openssl-legacy-provider --force && npm run start --openssl-legacy-provider"
+    tty: true
+    ports:
+      - 4200:4200
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

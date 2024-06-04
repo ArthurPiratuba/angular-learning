@@ -31,7 +31,10 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
+    imports: [RouterModule.forRoot(appRoutes,
+        //Add a hashtag '#' on url to prevent server from handling full url, only handle before the hashtag
+        //{ useHash: true }
+    )],
     exports: [RouterModule]
 })
 export class AppRoutingModule {

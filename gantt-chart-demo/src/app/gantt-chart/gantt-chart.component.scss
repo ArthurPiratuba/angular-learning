@@ -1,0 +1,11 @@
+.bar {
+  stroke: #000;
+}
+
+.axis--x path {
+  display: none;
+}
+
+.axis--y .tick line {
+  display: none;
+}
